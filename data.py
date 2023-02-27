@@ -14,8 +14,8 @@ import pandas as pd
 
 # - Important code below ----------------------------------------------------- #
 # Import data from csv files 
-training_dataset = pd.read_csv("training_dataset.csv")
-testing_dataset = pd.read_csv("testing_data.csv")
+training_dataset = pd.read_csv("Training_dataset.csv")
+testing_dataset = pd.read_csv("Testing_dataset.csv")
 
 #Name of wine 
 train_type_key = training_dataset.iloc[:, 0].values.tolist()
@@ -36,30 +36,34 @@ class DataPoint:
 
 #Object to store all datapoints 
 class DataSet:
-    dataset = list()
+    traindataset = list()
+    testdataset = list()
 
 #Populate data object
-def StructTestData():
-    D = DataSet()
-    for i in range(0,len(test_type_key)): 
-        d = DataPoint()
-        d.type = test_type_key[i]
-        d.key = test_class_key[i]
-        d.values = test_value_key[i]
-        D.dataset.append(d)
+def StructData(Data):
 
-    return D
-
-#Populate data object
-def StructTrainingData():
-    D = DataSet()
     for i in range(0,len(train_type_key)): 
         d = DataPoint()
         d.type = train_type_key[i]
         d.key = train_class_key[i]
         d.values = train_value_key[i]
-        D.dataset.append(d)
+        Data.traindataset.append(d)
 
-    return D
+    for i in range(len(test_type_key)): 
+        d = DataPoint()
+        d.type = test_type_key[i]
+        d.key = test_class_key[i]
+        d.values = test_value_key[i]
+        Data.testdataset.append(d)
+
+    return Data
+
+
+def GetData():
+    Data = DataSet()
+    FormattedData = StructData(Data)
+    return FormattedData
+
+
 
   
