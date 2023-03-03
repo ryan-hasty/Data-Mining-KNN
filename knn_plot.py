@@ -237,7 +237,7 @@ def main():
 
     real = []
     accuracy = list()
-    #accuracy.append(0) this line breaks out results
+    #accuracy.append(0) #this line breaks out results
     plotsensitivity = list()
     plotsensitivity.append(0)
     plotspecificity = list()
@@ -278,13 +278,11 @@ def main():
             
         # Print out results to document
         count = 0
-        temp = 0
         for idx, x in enumerate(predictions.values()):
             if count % 21 == 0:
-                temp += 1
                 output_file.write("K=" + str(i) + " Below\n")
                 output_file.write("Real grade \tPredicted grade\n")
-            output_file.write(str(x) + "\t" + str(real[idx]) + "\n")
+            output_file.write(str(real[idx]) + "\t\t\t" + str(x) + "\n")
             count += 1
                 
         # get accuracy
@@ -296,7 +294,7 @@ def main():
         output_file.write("\nK value: " + str(i) + "\n")
         output_file.write("Specitivity: " + str(specitivity)+ "\n")
         output_file.write("Sensitivity: " + str(sensitivity)+ "\n")
-        output_file.write("Accuracy: " + str(accuracy)+ "\n\n")
+        output_file.write("Accuracy: " + str(accuracy[i-1]) + "\n\n")
 
     output_file.close()
     
