@@ -243,7 +243,7 @@ def main():
     plotspecificity = list()
     plotspecificity.append(0)
     output_file = open("KNN_Output.txt", "w")
-    
+    output_file.write("TEAM 7 RESULT REPORT \n\n")
     # Generate true scores
     for x in testL:
         real.append(x[1])
@@ -281,8 +281,8 @@ def main():
         for idx, x in enumerate(predictions.values()):
             if count % 21 == 0:
                 output_file.write("K=" + str(i) + " Below\n")
-                output_file.write("Real grade \tPredicted grade\n")
-            output_file.write(str(real[idx]) + "\t\t\t" + str(x) + "\n")
+                output_file.write("Real grade\tPredicted grade\n")
+            output_file.write(str(real[idx]) + "\t\t" + str(x) + "\n")
             count += 1
                 
         # get accuracy

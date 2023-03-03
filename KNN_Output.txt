@@ -1,24 +1,26 @@
+TEAM 7 RESULT REPORT 
+
 K=1 Below
-Real grade 	Predicted grade
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			0
-1			1
-0			0
-0			0
-0			0
-0			0
-0			0
-0			0
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		0
+1		1
+0		0
+0		0
+0		0
+0		0
+0		0
+0		0
+0		0
+0		0
+0		0
 
 K value: 1
 Specitivity: 1.0
@@ -26,26 +28,26 @@ Sensitivity: 0.8
 Accuracy: 0.8947368421052632
 
 K=2 Below
-Real grade 	Predicted grade
-1			0
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			0
-0			1
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		0
+0		1
+0		0
+0		0
 
 K value: 2
 Specitivity: 0.6666666666666666
@@ -53,26 +55,26 @@ Sensitivity: 0.8
 Accuracy: 0.7368421052631579
 
 K=3 Below
-Real grade 	Predicted grade
-1			0
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			0
-0			0
-0			1
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		0
+0		0
+0		1
+0		0
+0		0
 
 K value: 3
 Specitivity: 0.7777777777777778
@@ -80,26 +82,26 @@ Sensitivity: 0.8
 Accuracy: 0.7894736842105263
 
 K=4 Below
-Real grade 	Predicted grade
-1			1
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			0
-0			0
-0			1
-0			0
-0			0
+Real grade	Predicted grade
+1		1
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		0
+0		0
+0		1
+0		0
+0		0
 
 K value: 4
 Specitivity: 0.7777777777777778
@@ -107,26 +109,26 @@ Sensitivity: 0.9
 Accuracy: 0.8421052631578947
 
 K=5 Below
-Real grade 	Predicted grade
-1			0
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			0
-0			0
-0			1
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		0
+0		0
+0		1
+0		0
+0		0
 
 K value: 5
 Specitivity: 0.7777777777777778
@@ -134,26 +136,26 @@ Sensitivity: 0.8
 Accuracy: 0.7894736842105263
 
 K=6 Below
-Real grade 	Predicted grade
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			1
-0			1
-0			0
-0			1
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		1
+0		1
+0		0
+0		1
+0		0
+0		0
+0		0
 
 K value: 6
 Specitivity: 0.6666666666666666
@@ -161,26 +163,26 @@ Sensitivity: 0.9
 Accuracy: 0.7894736842105263
 
 K=7 Below
-Real grade 	Predicted grade
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			0
-0			1
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		0
+0		1
+0		0
+0		0
+0		0
 
 K value: 7
 Specitivity: 0.7777777777777778
@@ -188,26 +190,26 @@ Sensitivity: 0.9
 Accuracy: 0.8421052631578947
 
 K=8 Below
-Real grade 	Predicted grade
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			1
-0			1
-0			0
+Real grade	Predicted grade
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		1
+0		1
+0		0
 
 K value: 8
 Specitivity: 0.4444444444444444
@@ -215,26 +217,26 @@ Sensitivity: 0.9
 Accuracy: 0.6842105263157895
 
 K=9 Below
-Real grade 	Predicted grade
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			1
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		1
+0		0
+0		0
 
 K value: 9
 Specitivity: 0.5555555555555556
@@ -242,26 +244,26 @@ Sensitivity: 0.9
 Accuracy: 0.7368421052631579
 
 K=10 Below
-Real grade 	Predicted grade
-1			0
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			1
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		1
+0		0
+0		0
 
 K value: 10
 Specitivity: 0.5555555555555556
@@ -269,26 +271,26 @@ Sensitivity: 0.8
 Accuracy: 0.6842105263157895
 
 K=11 Below
-Real grade 	Predicted grade
-1			0
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			1
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		1
+0		0
+0		0
 
 K value: 11
 Specitivity: 0.5555555555555556
@@ -296,26 +298,26 @@ Sensitivity: 0.8
 Accuracy: 0.6842105263157895
 
 K=12 Below
-Real grade 	Predicted grade
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		0
+0		0
+0		0
 
 K value: 12
 Specitivity: 0.6666666666666666
@@ -323,26 +325,26 @@ Sensitivity: 0.9
 Accuracy: 0.7894736842105263
 
 K=13 Below
-Real grade 	Predicted grade
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		0
+0		0
+0		0
 
 K value: 13
 Specitivity: 0.6666666666666666
@@ -350,26 +352,26 @@ Sensitivity: 0.9
 Accuracy: 0.7894736842105263
 
 K=14 Below
-Real grade 	Predicted grade
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		0
+0		0
+0		0
 
 K value: 14
 Specitivity: 0.6666666666666666
@@ -377,26 +379,26 @@ Sensitivity: 0.9
 Accuracy: 0.7894736842105263
 
 K=15 Below
-Real grade 	Predicted grade
-1			0
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		0
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		0
+0		0
+0		0
 
 K value: 15
 Specitivity: 0.6666666666666666
@@ -404,26 +406,26 @@ Sensitivity: 0.9
 Accuracy: 0.7894736842105263
 
 K=16 Below
-Real grade 	Predicted grade
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		0
+0		0
+0		0
 
 K value: 16
 Specitivity: 0.6666666666666666
@@ -431,26 +433,26 @@ Sensitivity: 1.0
 Accuracy: 0.8421052631578947
 
 K=17 Below
-Real grade 	Predicted grade
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		0
+0		0
+0		0
 
 K value: 17
 Specitivity: 0.6666666666666666
@@ -458,26 +460,26 @@ Sensitivity: 1.0
 Accuracy: 0.8421052631578947
 
 K=18 Below
-Real grade 	Predicted grade
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		0
+0		0
+0		0
 
 K value: 18
 Specitivity: 0.6666666666666666
@@ -485,26 +487,26 @@ Sensitivity: 1.0
 Accuracy: 0.8421052631578947
 
 K=19 Below
-Real grade 	Predicted grade
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		0
+0		0
+0		0
 
 K value: 19
 Specitivity: 0.6666666666666666
@@ -512,26 +514,26 @@ Sensitivity: 1.0
 Accuracy: 0.8421052631578947
 
 K=20 Below
-Real grade 	Predicted grade
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-1			1
-0			0
-0			0
-0			0
-0			1
-0			1
-0			1
-0			0
-0			0
-0			0
+Real grade	Predicted grade
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+1		1
+0		0
+0		0
+0		0
+0		1
+0		1
+0		1
+0		0
+0		0
+0		0
 
 K value: 20
 Specitivity: 0.6666666666666666
