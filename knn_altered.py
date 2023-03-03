@@ -83,9 +83,12 @@ def main():
     pqr_count(testDataSet)
     example = testDataSet.dataset
 
+    
     for i in range(19):
         nn = Neighbors(1, example[i].distances, trainDataSet)
         print("Predicted class: ", nn)
+
+    
 
     #for i in example:
         #print(i.distances)

@@ -12,7 +12,6 @@
 
 import pandas as pd
 from collections import defaultdict
-import matplotlib.pylab as plt
 
 # - Important code below ----------------------------------------------------- #
 # Convert data frames to NumPy arrays
@@ -22,8 +21,16 @@ test = pd.read_csv("Testing_dataset.csv")
 testL = test.values.tolist()
 
 def jaccards_coefficient(p, q, r):
-
-  if(q == 0):
+  """
+  Parameters: int p, int q, int r
+  -------
+  :return float:    the result of the calculation.
+  -------
+  Jaccard's coefficient is used to determine likeness, and has the
+  following formula: `p / (r + q + r)`.
+  """
+  
+  if(p == 0):
       return 0
   else:    
       j_coefficient = p / (p + q + r)
@@ -111,6 +118,7 @@ def prediction(knn_list):
     for k, v in knn_list:
         d[k].append(v)
         
+    print(d, "\n")
     
     # For every value in the dictionary test the value of the 90+, 90- on test
     for k in d:
@@ -139,6 +147,9 @@ def prediction(knn_list):
                     continue
                 else:
                     d[k] = 0 # assign to 90- if key, value != 1
+                
+    for k,v in d.items():
+        print("Wine: ",k,"\nPrediction: ",v, "\n")
         
     return d
 
@@ -157,19 +168,23 @@ def calc_sensitivity(prediction_dict):
         
         # If the prediction[i] == actual[i] then add 1 to true_positive
         if prediction_dict[k] == 1 and actual[k] == 1:
+            print("Wine:",k," VALUED:", prediction_dict[k], "ACTUAL:", actual[k], "**True Positive**")
             true_positive += 1
             
         # If the prediction[i] is FALSE and actual[i] is Positive then add 1 to false_positive 
         elif prediction_dict[k] == 0 and actual[k] == 1:
+            print("Wine:", k," VALUED:",prediction_dict[k], "ACTUAL:", actual[k], "**False Negative**")
             false_negative += 1
             
+            # Otherwise, the wine is not getting counted
+        else:
+            print("Wine: ", k, "N/A")
     
     # Sensitivity = true_pos / (True_pos + false_neg)
-    if(true_positive + false_negative  != 0):
-        sensitivity = true_positive / (true_positive + false_negative)
-    else:
-        sensitivity = 0
+    sensitivity = true_positive / (true_positive + false_negative)
     
+    print("Sensitivity = ", true_positive, " / ", (true_positive + false_negative))
+    print("Sensitivity: ", sensitivity, "\n")
     
     return sensitivity, true_positive, false_negative
 
@@ -187,123 +202,58 @@ def calc_specificity(prediction_dict):
         
         # If the prediction[i] == actual[i] then add 1 to true_negative
         if prediction_dict[k] == 0 and actual[k] == 0:
+            print("Wine:",k," VALUED:", prediction_dict[k], "ACTUAL:", actual[k], "**True Negative**")
             true_negative += 1
             
         # If the prediction[i] is Positive and actual[i] is Negative then add 1 to false_positive 
         elif prediction_dict[k] == 1 and actual[k] == 0:
+            print("Wine:", k," VALUED:",prediction_dict[k], "ACTUAL:", actual[k], "**False Positive**")
             false_positive += 1
             
             # Otherwise, the wine is not getting counted
-
-    if(false_positive + true_negative != 0):
+        else:
+            print("Wine: ", k, "N/A")
+    
     # Sensitivity = true_negative / (false_pos + true_neg)
-        specificity = true_negative / (false_positive + true_negative)
-    else: 
-        specificity = 0
+    specificity = true_negative / (false_positive + true_negative)
+    print("Specificity = ", true_negative, " / ", (false_positive + true_negative))
+    print("Specificity: ", specificity, "\n")
     
     return specificity, true_negative, false_positive
     
 
 def calc_accuracy(true_p, true_n, false_p, false_n):
     #plug into formula
-    if((true_p + true_n + false_p + false_n) != 0):
-        accuracy = (true_p + true_n) / (true_p + true_n + false_p + false_n)
-    else: 
-        accuracy = 0
-
+    accuracy = (true_p + true_n) / (true_p + true_n + false_p + false_n)
     return accuracy
-
-def plotModelPerformance(accuracy, plotspecificity, plotsensitivity):
-   # Define xticks as a list comprehension
-    xticks = [i for i in range(1, 21)]
-
-# Plot the data and add labels
-    plt.plot(accuracy, label='Accuracy')
-    plt.plot(plotspecificity, label='Specificity')
-    plt.plot(plotsensitivity, label='Sensitivity')
-
-# Add legend and axis labels
-    plt.legend()
-    plt.xlabel('K Value')
-    plt.ylabel('Accuracy, Specificity, Sensitivity')
-    plt.xticks(xticks)
-    plt.xlim(1, 20)
-    plt.ylim(0.4, 1)
-
-    # Show the plot
-    plt.show()
     
 def main():
-
-    real = []
-    accuracy = list()
-    #accuracy.append(0) this line breaks out results
-    plotsensitivity = list()
-    plotsensitivity.append(0)
-    plotspecificity = list()
-    plotspecificity.append(0)
-    output_file = open("KNN_Output.txt", "w")
-    
-    # Generate true scores
-    for x in testL:
-        real.append(x[1])
-        
-    # Generate all K values and scores
-    for i in range(1, 21):
-
-        # Declare empty lists for later use
-        full_list = []
+    # Declare empty lists for later use
+    full_list = []
     
     # Go through each row/column in test list/training list
-        for element in testL:
-            temporary = getCoefficients(element.copy()) # get coefficients
-            full_list.append(temporary)
-    
+    for element in testL:
+        temporary = getCoefficients(element.copy()) # get coefficients
+        full_list.append(temporary)
     
     # sort list by coefficient value
-        for element in full_list:
-            element.sort(key = lambda x: x[1], reverse = True)
-        # K-Nearest-Neighbor indexes corresponding with index in training list
-            knn_list = get_knn(full_list, i) # ***INSERT K VALUE HERE***
+    for element in full_list:
+        element.sort(key = lambda x: x[1], reverse = True)
+        
+    # K-Nearest-Neighbor indexes corresponding with index in training list
+    knn_list = get_knn(full_list, 7) # ***INSERT K VALUE HERE***
     
-        # Get predictions based on Jaccard's Coefficients    
-            predictions = prediction(knn_list)
-            
+    # Get predictions based on Jaccard's Coefficients    
+    predictions = prediction(knn_list)
     
-        # get sensitivity score
-            sensitivity, true_p, false_n = calc_sensitivity(predictions)
+    # get sensitivity score
+    sensitivity, true_p, false_n = calc_sensitivity(predictions)
     
-        # get specificity
-            specitivity, true_n, false_p = calc_specificity(predictions)
-            
-        # Print out results to document
-        count = 0
-        temp = 0
-        for idx, x in enumerate(predictions.values()):
-            if count % 21 == 0:
-                temp += 1
-                output_file.write("K=" + str(i) + " Below\n")
-                output_file.write("Real grade \tPredicted grade\n")
-            output_file.write(str(x) + "\t" + str(real[idx]) + "\n")
-            count += 1
-                
-        # get accuracy
-        accuracy.append(calc_accuracy(true_p, true_n, false_p, false_n))
-        plotspecificity.append(specitivity)
-        plotsensitivity.append(sensitivity)
-
-        # Output specs to file
-        output_file.write("\nK value: " + str(i) + "\n")
-        output_file.write("Specitivity: " + str(specitivity)+ "\n")
-        output_file.write("Sensitivity: " + str(sensitivity)+ "\n")
-        output_file.write("Accuracy: " + str(accuracy)+ "\n\n")
-
-    output_file.close()
+    # get specificity
+    specitivity, true_n, false_p = calc_specificity(predictions)
     
-    #open and read the file after the overwriting:
-    opening_file = open("KNN_Output.txt", "r")
-    print(opening_file.read())
-    plotModelPerformance(accuracy, plotspecificity, plotsensitivity)
-
+    # get accuracy
+    accuracy = calc_accuracy(true_p, true_n, false_p, false_n)
+    print("ACCURACY: ", accuracy)
     
 main()
