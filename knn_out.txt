@@ -1,0 +1,522 @@
+TEAM 7 RESULT REPORT 
+
+Real Grade	Predicted Grade
+1			0
+1			0
+1			0
+1			1
+1			1
+1			0
+1			0
+1			1
+1			0
+1			1
+0			1
+0			1
+0			0
+0			1
+0			0
+0			0
+0			1
+0			1
+0			0
+
+K-value: 1
+Specificity: 0.4444444444444444
+Sensitivity: 0.4
+Accuracy: 0.42105263157894735
+
+Real Grade	Predicted Grade
+1			0
+1			0
+1			0
+1			1
+1			1
+1			0
+1			0
+1			1
+1			0
+1			1
+0			1
+0			1
+0			0
+0			1
+0			0
+0			0
+0			1
+0			1
+0			0
+
+K-value: 2
+Specificity: 0.4444444444444444
+Sensitivity: 0.4
+Accuracy: 0.42105263157894735
+
+Real Grade	Predicted Grade
+1			0
+1			1
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			0
+0			1
+0			0
+0			0
+0			1
+0			0
+0			0
+0			1
+0			1
+0			0
+
+K-value: 3
+Specificity: 0.5555555555555556
+Sensitivity: 0.5
+Accuracy: 0.5263157894736842
+
+Real Grade	Predicted Grade
+1			0
+1			0
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			0
+0			1
+0			1
+0			0
+0			1
+0			0
+0			0
+0			1
+0			1
+0			0
+
+K-value: 4
+Specificity: 0.4444444444444444
+Sensitivity: 0.4
+Accuracy: 0.42105263157894735
+
+Real Grade	Predicted Grade
+1			0
+1			1
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			0
+0			0
+0			1
+0			0
+0			1
+0			0
+0			1
+0			1
+0			1
+0			0
+
+K-value: 5
+Specificity: 0.4444444444444444
+Sensitivity: 0.5
+Accuracy: 0.47368421052631576
+
+Real Grade	Predicted Grade
+1			0
+1			0
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			0
+0			1
+0			1
+0			0
+0			1
+0			0
+0			0
+0			1
+0			1
+0			0
+
+K-value: 6
+Specificity: 0.4444444444444444
+Sensitivity: 0.4
+Accuracy: 0.42105263157894735
+
+Real Grade	Predicted Grade
+1			0
+1			1
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			0
+0			0
+0			1
+0			0
+0			1
+0			0
+0			1
+0			1
+0			1
+0			0
+
+K-value: 7
+Specificity: 0.4444444444444444
+Sensitivity: 0.5
+Accuracy: 0.47368421052631576
+
+Real Grade	Predicted Grade
+1			0
+1			0
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			0
+0			1
+0			1
+0			0
+0			1
+0			0
+0			1
+0			1
+0			1
+0			0
+
+K-value: 8
+Specificity: 0.3333333333333333
+Sensitivity: 0.4
+Accuracy: 0.3684210526315789
+
+Real Grade	Predicted Grade
+1			1
+1			1
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			0
+0			1
+0			1
+0			0
+0			1
+0			1
+0			1
+0			1
+0			1
+0			0
+
+K-value: 9
+Specificity: 0.2222222222222222
+Sensitivity: 0.6
+Accuracy: 0.42105263157894735
+
+Real Grade	Predicted Grade
+1			1
+1			1
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			0
+0			1
+0			1
+0			0
+0			1
+0			1
+0			0
+0			1
+0			1
+0			0
+
+K-value: 10
+Specificity: 0.3333333333333333
+Sensitivity: 0.6
+Accuracy: 0.47368421052631576
+
+Real Grade	Predicted Grade
+1			1
+1			1
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			0
+0			1
+0			1
+0			0
+0			1
+0			1
+0			0
+0			1
+0			1
+0			0
+
+K-value: 11
+Specificity: 0.3333333333333333
+Sensitivity: 0.6
+Accuracy: 0.47368421052631576
+
+Real Grade	Predicted Grade
+1			1
+1			1
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			1
+0			1
+0			1
+0			0
+0			1
+0			0
+0			0
+0			1
+0			1
+0			0
+
+K-value: 12
+Specificity: 0.4444444444444444
+Sensitivity: 0.7
+Accuracy: 0.5789473684210527
+
+Real Grade	Predicted Grade
+1			1
+1			1
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			1
+0			1
+0			1
+0			0
+0			1
+0			1
+0			1
+0			1
+0			0
+0			0
+
+K-value: 13
+Specificity: 0.3333333333333333
+Sensitivity: 0.7
+Accuracy: 0.5263157894736842
+
+Real Grade	Predicted Grade
+1			0
+1			1
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			1
+0			1
+0			1
+0			0
+0			1
+0			0
+0			0
+0			1
+0			0
+0			0
+
+K-value: 14
+Specificity: 0.5555555555555556
+Sensitivity: 0.6
+Accuracy: 0.5789473684210527
+
+Real Grade	Predicted Grade
+1			1
+1			1
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			1
+0			1
+0			1
+0			0
+0			1
+0			1
+0			1
+0			1
+0			0
+0			0
+
+K-value: 15
+Specificity: 0.3333333333333333
+Sensitivity: 0.7
+Accuracy: 0.5263157894736842
+
+Real Grade	Predicted Grade
+1			1
+1			1
+1			0
+1			1
+1			1
+1			1
+1			0
+1			1
+1			0
+1			1
+0			1
+0			1
+0			0
+0			1
+0			1
+0			1
+0			1
+0			0
+0			0
+
+K-value: 16
+Specificity: 0.3333333333333333
+Sensitivity: 0.7
+Accuracy: 0.5263157894736842
+
+Real Grade	Predicted Grade
+1			1
+1			1
+1			0
+1			0
+1			1
+1			1
+1			0
+1			1
+1			1
+1			1
+0			0
+0			1
+0			0
+0			1
+0			1
+0			1
+0			1
+0			0
+0			0
+
+K-value: 17
+Specificity: 0.4444444444444444
+Sensitivity: 0.7
+Accuracy: 0.5789473684210527
+
+Real Grade	Predicted Grade
+1			1
+1			1
+1			0
+1			0
+1			1
+1			1
+1			0
+1			1
+1			1
+1			1
+0			1
+0			1
+0			0
+0			1
+0			1
+0			1
+0			1
+0			0
+0			0
+
+K-value: 18
+Specificity: 0.3333333333333333
+Sensitivity: 0.7
+Accuracy: 0.5263157894736842
+
+Real Grade	Predicted Grade
+1			1
+1			1
+1			0
+1			0
+1			1
+1			1
+1			0
+1			1
+1			1
+1			1
+0			1
+0			1
+0			0
+0			1
+0			1
+0			1
+0			1
+0			0
+0			0
+
+K-value: 19
+Specificity: 0.3333333333333333
+Sensitivity: 0.7
+Accuracy: 0.5263157894736842
+
+Real Grade	Predicted Grade
+1			0
+1			1
+1			0
+1			0
+1			1
+1			1
+1			0
+1			1
+1			0
+1			1
+0			1
+0			1
+0			0
+0			1
+0			1
+0			1
+0			1
+0			0
+0			0
+
+K-value: 20
+Specificity: 0.3333333333333333
+Sensitivity: 0.5
+Accuracy: 0.42105263157894735
+
