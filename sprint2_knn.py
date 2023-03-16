@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Mar 14 15:41:24 2023
-
 @author: RRhas
 """
 
 import pandas as pd
 import numpy as np
 import matplotlib as plt # currently unused
-import warnings
+#import warnings save just in case
 
 # Keep below ignore options just in case we need later on
 #warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning) # ignore
@@ -20,18 +19,18 @@ import warnings
 test = pd.read_csv("Testing_dataset.csv")
 test_data = test.to_numpy()
 test_np = test_data[:,2:] # datset to work with
-test_answers = test_data[:,1] # correct answers for test dataset
+test_answers = np.array(test_data[:,1]) # correct answers for test dataset
 
 
 # Training Dataset - Contains np array to work with as well as the correct answers
 train = pd.read_csv("Training_dataset.csv")
 train_data = train.to_numpy()
 train_np = train_data[:,2:] # dataset to work with
-train_answers = train_data[:,1] # correct answers for training dataset
+train_answers = np.array(train_data[:,1]) # correct answers for training dataset
 
 def get_jaccards(p, q, r):
     
-    if(p == 0):
+    if(p+q+r == 0): # Prevent division by 0
         return 0
     else:    
         j_coefficient = p / (p + q + r)
@@ -53,7 +52,7 @@ def get_coeffs(train_arr, test_arr):
     
     for idx, train_row in enumerate(train_arr):
         for index, test_row in enumerate(test_arr):
-            count_p = np.sum((train_row == 1) & (test_row == 1)) # Count common elements
+            count_p = np.sum((train_row == 1) & (test_row == 1)) # Count 1/1 combo
             count_q = np.sum((train_row == 1) & (test_row == 0)) # Count 1/0 combo
             count_r = np.sum((train_row == 0) & (test_row == 1)) # Count 0/1 combo
             my_coefficients = np.append(my_coefficients, get_jaccards(count_p, count_q, count_r))
@@ -83,23 +82,24 @@ def get_knns(arr_to_knn, k=1): # k's default value set to 1
         index_arr[i, 0] = i
         index_arr[i, 1:k+1] = sorted_indices
     
+    #print(sorted_coeffs[0], index_arr[0])
     return sorted_coeffs, index_arr, k
     
 def get_predictions(index_of_knns, k_val):
-    
+            
     # Initialize variables
     temp_arr = index_of_knns[:,1:k_val+1]
-    vals_predicted = np.array([])
-                            
+    vals_predicted = np.array([])                      
     # For every row of coefficient index's
     for item in temp_arr:
-        
         # Initialize counter variables to reset with each row being predicted
         classify_plus = 0
         classify_minus = 0
+        k_temp = np.array([])
         
         # For every value in each row
         for index_val in item:
+            k_temp = np.append(k_temp, train_answers[index_val])
             if train_answers[index_val] == 1: # Count 90+
                 classify_plus +=1
             elif train_answers[index_val] == 0: # Count 90-
@@ -114,11 +114,18 @@ def get_predictions(index_of_knns, k_val):
             vals_predicted = np.append(vals_predicted, 0)        
             
         else:
-            if train_answers[item[0]] == 1: # Classifies as highest coeff class
-                vals_predicted = np.append(vals_predicted, 1)
-            else:
+            #if highest coeff is 0 and last val is 1, break tie goes to 0
+            if k_temp[k_val-1] == 1 and train_answers[index_val] == 0:
                 vals_predicted = np.append(vals_predicted, 0)
                 
+            # if highest coeff is 1 and last val is 0, break tie goes to 1
+            elif k_temp[k_val-1] == 0 and train_answers[index_val] == 1:
+                vals_predicted = np.append(vals_predicted, 1)
+            
+            # Otherwise, we assign highest coefficients value to the prediction
+            else:
+                vals_predicted = np.append(vals_predicted, train_answers[item[0]]) # else go for highest coeff
+
     return vals_predicted
 
 
@@ -211,6 +218,7 @@ def main():
         
         # Print out the variables and output to txt doc
         format_output(predicted_vals, sensitivity, specificity, accuracy, output_file, k_val)
+        
         
     # Close file
     output_file.close()
