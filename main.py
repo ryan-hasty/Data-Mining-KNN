@@ -14,22 +14,24 @@ sigmoid = svm.SVC(kernel='sigmoid', C = 1)
 
 def main():
     #Grab the dataset input 
-    dataset = data.GetData()
+    dataset = data.GetRandomizedData()
 
-    s.dataSplit(dataset)
+    s.DataSplit(dataset)
     svm_accuracy.append(s.SVMModel(rbf))
-    svm_accuracy.append(s.SVMModel(poly))
-    svm_accuracy.append(s.SVMModel(linear))
     svm_accuracy.append(s.SVMModel(sigmoid))
+    svm_accuracy.append(s.SVMModel(linear))
+    svm_accuracy.append(s.SVMModel(poly))
+    
 
     for i in svm_accuracy: 
         print(i)
     for k_value in range(21):
-        predictions = k.knn(dataset, k_value+1)
+        predictions = k.KNN(dataset, k_value+1)
         print(predictions)
+        metrics = a.ModelMeasures(dataset, predictions)
 
-        accuracy = a.get_accuracy(dataset, predictions)
-
-        print(accuracy)
+        print("Accuracy", metrics[0])
+        print("Sensitivity", metrics[1])
+        print("Specificity", metrics[2])
 
 main()

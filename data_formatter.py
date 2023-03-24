@@ -77,3 +77,17 @@ def GetData():
     #Format the data 
     FormattedData = StructData(Dataset)
     return FormattedData
+
+def GetRandomizedData():
+    #Create new dataset object 
+    Dataset = DataSet()
+    #Format the data 
+    StructData(Dataset)
+    RandomFormattedData = RandomizeData(Dataset)
+    return RandomFormattedData
+
+def RandomizeData(dataset):
+    #Create new dataset object
+    np.random.shuffle(dataset.traindataset)
+    np.random.shuffle(dataset.testdataset)
+    return dataset

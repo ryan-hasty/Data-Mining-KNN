@@ -1,14 +1,13 @@
-from sklearn import svm
+
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-import numpy as np
 
 xtrain = []
 ytrain = []
 xtest = []
 ytest = []
 
-def dataSplit(dataSet):
+def DataSplit(dataSet):
     for i in dataSet.traindataset:
         xtrain.append(i.values)
         ytrain.append(i.key)
@@ -19,7 +18,7 @@ def dataSplit(dataSet):
 
 def SVMModel(kernel):
     kernel.fit(xtrain,ytrain)
-    y_prediction = kernel.predict(xtest)
+    kernel.predict(xtest)
     accuracy = kernel.score(xtest, ytest)
 
     return accuracy

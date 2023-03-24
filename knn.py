@@ -1,8 +1,6 @@
 from collections import Counter
-import random
 
-#done 
-def jaccards_coefficient(p, q, r):
+def JaccardsCoefficient(p, q, r):
     
     if(p+q+r == 0): # Prevent division by 0
         return 0
@@ -11,7 +9,7 @@ def jaccards_coefficient(p, q, r):
         
     return j_coefficient
 
-def pqr_count(Dataset, k_value):
+def PQR_Counter(Dataset, k_value):
     for i in range(len(Dataset.testdataset)):
         distances = [None] * k_value
         key = [None] * k_value
@@ -29,7 +27,7 @@ def pqr_count(Dataset, k_value):
                 elif Dataset.traindataset[j].values[k] == 1 and Dataset.testdataset[i].values[k] == 0:
                     r += 1
             # Calculate JC
-            jc = jaccards_coefficient(p, q, r)
+            jc = JaccardsCoefficient(p, q, r)
             # find the minimum distance and replace if current jc is larger
             if None in distances:
                 min_index = distances.index(None)
@@ -45,21 +43,18 @@ def pqr_count(Dataset, k_value):
         new_key = key[0:k_value]
         Dataset.testdataset[i].prediction_keys = new_key
 
-
-
-
     
-def predict(value_to_predict):
+def Predict(value_to_predict):
     counts = Counter(value_to_predict.prediction_keys)
     most_common = counts.most_common(1)
     most_common_value = most_common[0][0]
     return most_common_value
    
     
-def knn(Dataset, k):
+def KNN(Dataset, k):
     predictions = list()
-    pqr_count(Dataset, k)
+    PQR_Counter(Dataset, k)
     for i in Dataset.testdataset:
-        predictions.append(predict(i))
+        predictions.append(Predict(i))
     return predictions
 
