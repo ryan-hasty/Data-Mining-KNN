@@ -14,7 +14,7 @@ def jaccards_coefficient(p, q, r):
 def pqr_count(Dataset, k_value):
     for i in range(len(Dataset.testdataset)):
         distances = [None] * k_value
-        key = list()
+        key = [None] * k_value
         # compare against each train value
         for j in range(len(Dataset.traindataset)):
             p = 0
@@ -34,12 +34,14 @@ def pqr_count(Dataset, k_value):
             if None in distances:
                 min_index = distances.index(None)
                 distances[min_index] = jc
+                key[min_index] = Dataset.traindataset[j].key
             else:
                 min_distance = min(distances)
                 min_index = distances.index(min_distance)
                 if jc > min_distance:
                     distances[min_index] = jc
-            key.append(Dataset.traindataset[j].key)
+                    key[min_index] = Dataset.traindataset[j].key
+
         new_key = key[0:k_value]
         Dataset.testdataset[i].prediction_keys = new_key
 
