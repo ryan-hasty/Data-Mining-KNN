@@ -20,4 +20,4 @@ def ModelMeasures(data, predictions):
     specificity = true_negative  / (false_positive  + true_negative ) if (false_positive  + true_negative ) != 0 else 0
     accuracy = (true_positive  + true_negative ) / (true_positive  + true_negative  + false_positive  + false_negative ) if (true_positive  + true_negative  + false_positive  + false_negative ) != 0 else 0
     
-    return accuracy, sensitivity, specificity 
+    return accuracy, sensitivity, specificity, true_positive, true_negative, false_negative, false_positive
