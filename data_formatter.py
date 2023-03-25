@@ -1,15 +1,3 @@
-# ---------------------------------------------------------------------------- #
-# Author:     Job McCully                                                      #
-# Author:     Ryan Hasty                                                       #
-# Author:     Robert Summerlin                                                 #
-# Author:     Nickolas Paternoster                                             #
-#                                                                              #
-# Professor:  Dr. Chen                                                         #
-# Class:      CSCI 4370 / CSCI 6397                                            #
-# Assignment: Project 2                                                        #
-# Date:       28 March 2023                                                    #
-# ---------------------------------------------------------------------------- #
-
 import pandas as pd
 import numpy as np
 
@@ -21,14 +9,17 @@ testing_dataset = pd.read_csv("Testing_dataset.csv")
 # Name of wine 
 train_type_key = training_dataset.iloc[:, 0].to_numpy()
 test_type_key = testing_dataset.iloc[:, 0].to_numpy()
+generic_type_key = np.array([])
 
 # Grade classification of wine 
 train_class_key = training_dataset.iloc[:, 1].to_numpy()
 test_class_key = testing_dataset.iloc[:, 1].to_numpy()
+generic_class_key = np.array([])
 
 # Attributes 
 train_value_key = training_dataset.iloc[:, 2:].to_numpy()
 test_value_key = testing_dataset.iloc[:, 2:].to_numpy()
+generic_value_key = np.array([])
 
 # Object to store all values of a datapoint 
 class DataPoint:
@@ -43,6 +34,15 @@ class DataSet:
     def __init__(self):
         self.traindataset = np.array([])
         self.testdataset = np.array([])
+
+# Object to store all datapoints 
+class RandomizedDataSet:
+    def __init__(self):
+        self.dataset = np.array([])
+
+class CFVDataSets: 
+    def __init__(self):
+        self.group = np.array([])
 
 # Populate data object
 def StructData(DataSet):
@@ -71,6 +71,31 @@ def StructData(DataSet):
 
     return DataSet
 
+def CombineData():
+    generic_type_key = train_type_key.concatenate(test_type_key)
+    generic_class_key = train_class_key.concatenate(test_class_key)
+    generic_value_key = train_value_key.concatenate(test_value_key)
+
+    return generic_type_key, generic_class_key, generic_value_key
+
+
+# Populate data object
+def StructRandomizedData(RandomizedDS, gtk, gck, gvk):
+    # set empty array 
+    dataset = []
+
+    for i in range(len(gtk)): 
+        d = DataPoint()
+        d.type = gtk[i]
+        d.key = gck[i]
+        d.values = gvk[i]
+        dataset.append(d)
+
+    #Sets the arrays within the DataSet object to the newly populated arrays 
+    RandomizedDS.dataset = np.array(dataset)
+
+    return RandomizedDS
+
 def GetData():
     #Create new dataset object 
     Dataset = DataSet()
@@ -80,14 +105,43 @@ def GetData():
 
 def GetRandomizedData():
     #Create new dataset object 
-    Dataset = DataSet()
+    Dataset = RandomizedDataSet()
+    combined_data = CombineData()
     #Format the data 
-    StructData(Dataset)
+    StructRandomizedData(Dataset, combined_data[0], combined_data[1], combined_data[2])
     RandomFormattedData = RandomizeData(Dataset)
     return RandomFormattedData
 
+def Get_CFV_Data():
+    #Create new dataset object 
+    Dataset = DataSet()
+    CFV = CFVDataSets()
+    #Format the data 
+    FormattedData = StructData(Dataset)
+    #Cross fold validation 
+    cfvdata = Five_CFV(5, FormattedData, CFV)  
+    return cfvdata
+
 def RandomizeData(dataset):
     #Create new dataset object
+    np.random.shuffle(dataset.dataset)
+    return dataset
+
+def Five_CFV(k, dataset,cfv):
+   # Shuffle train and test datasets
     np.random.shuffle(dataset.traindataset)
     np.random.shuffle(dataset.testdataset)
-    return dataset
+
+# Split train and test datasets into 5 groups
+    train_groups = np.array_split(dataset.traindataset, 5)
+    test_groups = np.array_split(dataset.testdataset, 5)
+
+    for fold in range(5):
+        data = DataSet()
+        data.testdataset = test_groups[fold]
+        data.traindataset = train_groups[fold] 
+        cfv.group = np.append(cfv.group, data)
+
+    return cfv
+
+
