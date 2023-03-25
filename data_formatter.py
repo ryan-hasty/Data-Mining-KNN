@@ -35,14 +35,9 @@ class DataSet:
         self.traindataset = np.array([])
         self.testdataset = np.array([])
 
-# Object to store all datapoints 
-class RandomizedDataSet:
-    def __init__(self):
-        self.dataset = np.array([])
-
 class CFVDataSets: 
     def __init__(self):
-        self.group = np.array([])
+        self.group = DataSet()
 
 # Populate data object
 def StructData(DataSet):
@@ -71,31 +66,6 @@ def StructData(DataSet):
 
     return DataSet
 
-def CombineData():
-    generic_type_key = train_type_key.concatenate(test_type_key)
-    generic_class_key = train_class_key.concatenate(test_class_key)
-    generic_value_key = train_value_key.concatenate(test_value_key)
-
-    return generic_type_key, generic_class_key, generic_value_key
-
-
-# Populate data object
-def StructRandomizedData(RandomizedDS, gtk, gck, gvk):
-    # set empty array 
-    dataset = []
-
-    for i in range(len(gtk)): 
-        d = DataPoint()
-        d.type = gtk[i]
-        d.key = gck[i]
-        d.values = gvk[i]
-        dataset.append(d)
-
-    #Sets the arrays within the DataSet object to the newly populated arrays 
-    RandomizedDS.dataset = np.array(dataset)
-
-    return RandomizedDS
-
 def GetData():
     #Create new dataset object 
     Dataset = DataSet()
@@ -103,45 +73,27 @@ def GetData():
     FormattedData = StructData(Dataset)
     return FormattedData
 
-def GetRandomizedData():
-    #Create new dataset object 
-    Dataset = RandomizedDataSet()
-    combined_data = CombineData()
-    #Format the data 
-    StructRandomizedData(Dataset, combined_data[0], combined_data[1], combined_data[2])
-    RandomFormattedData = RandomizeData(Dataset)
-    return RandomFormattedData
-
 def Get_CFV_Data():
     #Create new dataset object 
     Dataset = DataSet()
     CFV = CFVDataSets()
     #Format the data 
     FormattedData = StructData(Dataset)
-    #Cross fold validation 
-    cfvdata = Five_CFV(5, FormattedData, CFV)  
-    return cfvdata
+    np.random.shuffle(FormattedData.traindataset)
 
-def RandomizeData(dataset):
-    #Create new dataset object
-    np.random.shuffle(dataset.dataset)
-    return dataset
+    return FormattedData.traindataset, CFV
 
-def Five_CFV(k, dataset,cfv):
-   # Shuffle train and test datasets
-    np.random.shuffle(dataset.traindataset)
-    np.random.shuffle(dataset.testdataset)
-
+def Five_CFV_Split(iteration, dataset,cfv):
 # Split train and test datasets into 5 groups
-    train_groups = np.array_split(dataset.traindataset, 5)
-    test_groups = np.array_split(dataset.testdataset, 5)
+    groups = np.array_split(dataset, 5)
+    data = DataSet()
 
     for fold in range(5):
-        data = DataSet()
-        data.testdataset = test_groups[fold]
-        data.traindataset = train_groups[fold] 
-        cfv.group = np.append(cfv.group, data)
+        if(fold == iteration):
+            data.testdataset = groups[iteration]
+        elif fold != iteration:
+            data.traindataset = np.concatenate([data.traindataset, groups[fold]])
+    cfv.group = data
 
     return cfv
-
 

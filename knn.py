@@ -57,4 +57,3 @@ def KNN(Dataset, k):
     for i in Dataset.testdataset:
         predictions.append(Predict(i))
     return predictions
-
