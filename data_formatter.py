@@ -81,7 +81,7 @@ def Get_CFV_Data():
     FormattedData = StructData(Dataset)
     np.random.shuffle(FormattedData.traindataset)
 
-    return FormattedData.traindataset, CFV
+    return FormattedData.traindataset, CFV, FormattedData.testdataset
 
 def Five_CFV_Split(iteration, dataset,cfv):
 # Split train and test datasets into 5 groups

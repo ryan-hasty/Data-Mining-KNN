@@ -6,6 +6,7 @@ import analysis as a
 
 #Variables 
 svm_accuracy = list()
+svm_confusionmatrix = list()
 rbf = svm.SVC(kernel='rbf', C = 1)
 poly = svm.SVC(kernel='poly', C = 1)
 linear = svm.SVC(kernel='linear', C = 1)
@@ -40,21 +41,44 @@ def main():
     elif(userinput == 1):
         #Grab the dataset input 1
         formatteddata = data.Get_CFV_Data()
-        overall_accuracy = 0
-        overall_sensitivity = 0
-        overall_specificity = 0
-        overall_true_positive = 0
-        overall_true_negative = 0
-        overall_false_negative = 0 
-        overall_false_positive = 0
+        knn_overall_accuracy = 0
+        knn_overall_sensitivity = 0
+        knn_overall_specificity = 0
+        knn_overall_true_positive = 0
+        knn_overall_true_negative = 0
+        knn_overall_false_negative = 0 
+        knn_overall_false_positive = 0
+        svm_overall_accuracy = 0
+        svm_overall_true_positive = 0
+        svm_overall_true_negative = 0
+        svm_overall_false_negative = 0 
+        svm_overall_false_positive = 0
+
 
         for k_value in range(5):
             # Cross-fold validation
             dataset = data.Five_CFV_Split(k_value, formatteddata[0], formatteddata[1])
+
+            xtrain, ytrain, xtest, ytest = s.DataSplit(dataset.group.traindataset, dataset.group.testdataset)
+            ypredict, accuracy, ytest = s.SVMModel(sigmoid, xtrain, ytrain, xtest, ytest)
+            tn, fp, fn, tp = s.ConfusionMatrix(ytest, ypredict)
+            print("\nFOR FOLD =", k_value+1)
+            print("SVM")
+            print("Accuracy", accuracy)
+            print("True Positive", tp)
+            print("True Negative", tn)
+            print("False Negative", fn)
+            print("False Positive", fp)
+
+            svm_overall_accuracy += accuracy
+            svm_overall_true_positive += tp
+            svm_overall_true_negative += tn
+            svm_overall_false_negative += fn
+            svm_overall_false_positive += fp
+
             knn_metrics = [a.ModelMeasures(dataset.group, k.KNN(dataset.group, k_value+1)) for k_value in range(20)]
             knn_accuracy, knn_sensitivity, knn_specificity, true_positive, true_negative, false_negative, false_positive = map(sum, zip(*knn_metrics))
-
-            print("\nFOR FOLD =", k_value+1)
+            print("\nKNN")
             print("Accuracy:", knn_accuracy/20)
             print("Sensitivity:", knn_sensitivity/20)
             print("Specificity:", knn_specificity/20)
@@ -63,22 +87,30 @@ def main():
             print("False Negative:", false_negative/20)
             print("False Positive:", false_positive/20)
 
-            overall_accuracy += knn_accuracy
-            overall_sensitivity += knn_sensitivity
-            overall_specificity += knn_specificity
-            overall_true_positive += true_positive
-            overall_true_negative += true_negative
-            overall_false_negative += false_negative
-            overall_false_positive += false_positive
+            knn_overall_accuracy += knn_accuracy
+            knn_overall_sensitivity += knn_sensitivity
+            knn_overall_specificity += knn_specificity
+            knn_overall_true_positive += true_positive
+            knn_overall_true_negative += true_negative
+            knn_overall_false_negative += false_negative
+            knn_overall_false_positive += false_positive
 
         print("\nOVERALL DATA:")
-        print("Accuracy:", overall_accuracy/100)
-        print("Sensitivity:", overall_sensitivity/100)
-        print("Specificity:", overall_specificity/100)
-        print("True Positive:", overall_true_positive/100)
-        print("True Negative:", overall_true_negative/100)
-        print("False Negative:", overall_false_negative/100)
-        print("False Positive:", overall_false_positive/100)
+        print("SVM")
+        print("Accuracy:", svm_overall_accuracy/5)
+        print("True Positive:", svm_overall_true_positive/5)
+        print("True Negative:", svm_overall_true_negative/5)
+        print("False Negative:", svm_overall_false_negative/5)
+        print("False Positive:", svm_overall_false_positive/5)
+
+        print("KNN")
+        print("Accuracy:", knn_overall_accuracy/100)
+        print("Sensitivity:", knn_overall_sensitivity/100)
+        print("Specificity:", knn_overall_specificity/100)
+        print("True Positive:", knn_overall_true_positive/100)
+        print("True Negative:", knn_overall_true_negative/100)
+        print("False Negative:", knn_overall_false_negative/100)
+        print("False Positive:", knn_overall_false_positive/100)
 
 
 

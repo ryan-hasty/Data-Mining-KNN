@@ -1,35 +1,42 @@
-
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
+from sklearn.metrics import confusion_matrix
+from sklearn.svm import SVC
 
-xtrain = []
-ytrain = []
-xtest = []
-ytest = []
+def DataSplit(traindataset, testdataset):
+    xtrain = []
+    ytrain = []
+    xtest = []
+    ytest = []
 
-def DataSplit(dataSet):
-    for i in dataSet.traindataset:
+    for i in traindataset:
         xtrain.append(i.values)
         ytrain.append(i.key)
 
-    for i in dataSet.testdataset:
+    for i in testdataset:
         xtest.append(i.values)
         ytest.append(i.key)
 
-def SVMModel(kernel):
-    kernel.fit(xtrain,ytrain)
-    kernel.predict(xtest)
+    return xtrain, ytrain, xtest, ytest
+
+def SVMModel(kernel, xtrain, ytrain, xtest, ytest):
+    kernel.fit(xtrain, ytrain)
+    ypredict = kernel.predict(xtest)
     accuracy = kernel.score(xtest, ytest)
 
-    return accuracy
+    return ypredict, accuracy, ytest
 
-def DimReduction():
-   pca = PCA(n_components=2)
+def DimReduction(xtrain, xtest):
+    pca = PCA(n_components=2)
+    xall = xtrain + xtest
+    plotData = pca.fit_transform(xall)
 
-   plotTrainData = pca.fit_transform(xtrain)
-   plotTestData = pca.fit_transform(xtest)
+    plt.scatter(plotData[:len(xtrain), 0], plotData[:len(xtrain), 1], label = 'training data')
+    plt.scatter(plotData[len(xtrain):, 0], plotData[len(xtrain):, 1], label = 'testing data')
+    plt.legend()
+    plt.show()
 
-   plt.scatter(plotTrainData[:, 0], plotTrainData[:, 1], label = 'training data')
-   plt.scatter(plotTestData[:, 0], plotTestData[:, 1], label = 'testing data')
-   plt.legend()
-   plt.show()
+def ConfusionMatrix(ytest, ypredict):
+    tn, fp, fn, tp = confusion_matrix(ytest, ypredict).ravel()
+    return tn, fp, fn, tp
+
