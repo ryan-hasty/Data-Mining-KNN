@@ -26,6 +26,8 @@ def SVMModel(kernel, xtrain, ytrain, xtest, ytest):
 
     return ypredict, accuracy, ytest
 
+
+
 def DimReduction(xtrain, xtest):
     pca = PCA(n_components=2)
     xall = xtrain + xtest
